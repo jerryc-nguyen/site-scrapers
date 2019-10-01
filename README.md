@@ -1,24 +1,12 @@
-# README
+# Sites scraper for your list - PRs are welcome!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+List of supported site:
 
 * ...
+
+
+### How to contribute:
+
+1. Write site parser at a service in services module, inside ItemParsers. For example: ItemParsers::ExampleCom
+2. Update method `by_url` inside `ItemParsers::Detail` that support your parser
+3. Test your result by url: `localhost:3000/parsers/details?url=YOUR_PARSED_PAGE_URL`
