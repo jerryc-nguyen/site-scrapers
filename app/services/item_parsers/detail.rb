@@ -1,7 +1,12 @@
 class ItemParsers::Detail
   def self.by_url(url)
-    data = {}
     url = url.split('?').first
+
+    data = if url.include?('tiki.vn')
+      ItemParsers::Tiki.new(url).detail
+    else
+      nil
+    end
 
     if data.present?
       data[:image_url] = data[:images_str].try(:first).to_s
