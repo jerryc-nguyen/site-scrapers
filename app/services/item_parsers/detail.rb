@@ -4,6 +4,8 @@ class ItemParsers::Detail
 
     data = if url.include?('tiki.vn')
       ItemParsers::Tiki.new(url).detail
+    elsif url.include?("vinabook.com")
+      ItemParsers::Vinabook.new(url).detail
     else
       nil
     end
