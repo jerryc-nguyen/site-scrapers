@@ -8,6 +8,8 @@ class ItemParsers::Detail
       ItemParsers::Vinabook.new(url).detail
     elsif url.include?("pibook.com")
       ItemParsers::Pibook.new(url).detail
+    elsif url.include?("khaitam.com")
+      ItemParsers::KhaiTam.new(url).detail
     else
       nil
     end
