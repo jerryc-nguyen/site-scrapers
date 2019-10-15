@@ -10,7 +10,7 @@ class ItemParsers::Detail
       ItemParsers::Pibook.new(url).detail
     elsif url.include?("khaitam.com")
       ItemParsers::KhaiTam.new(url).detail
-    elsif url.include?("nhanam.com")
+    elsif url.include?("nhanam.com.vn")
       ItemParsers::KhaiTam.new(url).detail
     else
       nil
