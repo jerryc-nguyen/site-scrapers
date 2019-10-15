@@ -6,6 +6,8 @@ class ItemParsers::Detail
       ItemParsers::Tiki.new(url).detail
     elsif url.include?("vinabook.com")
       ItemParsers::Vinabook.new(url).detail
+    elsif url.include?("pibook.com")
+      ItemParsers::Pibook.new(url).detail
     else
       nil
     end
