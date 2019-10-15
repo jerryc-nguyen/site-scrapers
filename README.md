@@ -3,6 +3,7 @@
 List of supported site:
 
 * tiki.vn
+* khaitam.com
 
 
 ### How to contribute:
