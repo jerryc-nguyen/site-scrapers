@@ -6,6 +6,7 @@ List of supported site:
 * vinabook.vn
 * pibook.com
 * khaitam.com
+* nhanam.com.vn
 
 ### How to contribute:
 

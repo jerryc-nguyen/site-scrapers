@@ -33,6 +33,30 @@ class ItemParsers::Nhanam
       isbn10       = nil
       isbn13       = nil
 
+      page.search(".bookdetail .attributes li").each do |li|
+        text_item    = li.text
+        isbn         = text_item.split("Mã sản phẩm:")[1].strip if text_item.include?("Mã sản phẩm:")
+        author       = text_item.split("Tác giả:")[1].strip if text_item.include?("Tác giả:")
+        translator   = text_item.split("Dịch giả:")[1].strip if text_item.include?("Dịch giả:")
+        publisher    = text_item.split("Nhà xuất bản:")[1].strip if text_item.include?("Nhà xuất bản:")
+        page_count   = text_item.split("Số trang:")[1].strip.to_i if text_item.include?("Số trang:")
+        published_at = text_item.split("Ngày phát hành:")[1].strip if text_item.include?("Ngày phát hành:")
+        size         = text_item.split("Kích thước:")[1].strip if text_item.include?("Kích thước:")
+      end
+
+      if isbn.to_s.length == 10
+        isbn10     = isbn
+      elsif isbn.to_s.length == 13
+        isbn13     = isbn
+      end
+
+      images = image_urls_ref.compact.select(&:present?).take(2).map do |url|
+        {
+          id: -1,
+          thumb_url: url.gsub("cache/200x200", "cache/600x800").gsub(/w\d+\/media/, "w900/media")
+        }
+      end
+
       {
         author: author,
         name: title,
