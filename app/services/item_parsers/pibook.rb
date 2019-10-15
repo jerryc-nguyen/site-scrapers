@@ -33,6 +33,27 @@ class ItemParsers::Pibook
       cost_price   = nil
       price        = nil
 
+      page.search(".sachct .sachct2 .pilist5 li").each do |li|
+        text_item    = li.text
+        author       = text_item.split("Tác giả")[1].strip if text_item.include?("Tác giả")
+        cost_price   = text_item.split("Giá bìa")[1].strip.chomp("₫").gsub(",","").to_f if text_item.include?("Giá bìa")
+        price        = text_item.split("Tại Pibook")[1].strip.chomp("₫").gsub(",","").to_f if text_item.include?("Tại Pibook")
+        company      = text_item.split("Nhà phát hành")[1].strip if text_item.include?("Nhà phát hành")
+        publisher    = text_item.split("Nhà Xuất Bản")[1].strip if text_item.include?("Nhà Xuất Bản")
+        page_count   = text_item.split("Số trang")[1].strip.to_i if text_item.include?("Số trang")
+        published_at = text_item.split("Phát hành")[1].strip if text_item.include?("Phát hành")
+        cover_type   = text_item.split("Định dạng bìa")[1].strip if text_item.include?("Định dạng bìa")
+        weight       = text_item.split("Trọng lượng vận chuyển")[1].strip if text_item.include?("Trọng lượng vận chuyển")
+        size         = text_item.split("Kích thước")[1].strip if text_item.include?("Kích thước")
+      end
+
+      images = image_urls_ref.compact.select(&:present?).take(2).map do |url|
+        {
+          id: -1,
+          thumb_url: url.gsub("cache/200x200", "cache/600x800").gsub(/w\d+\/media/, "w900/media")
+        }
+      end
+
       {
         author: author,
         name: title,

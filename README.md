@@ -3,8 +3,9 @@
 List of supported site:
 
 * tiki.vn
+* vinabook.vn
+* pibook.com
 * khaitam.com
-
 
 ### How to contribute:
 
