@@ -23,6 +23,8 @@ class ItemParsers::Detail
       ItemParsers::KhaiTam.new(url)
     elsif url.include?('sachphuongnam.com')
       ItemParsers::KhaiTam.new(url)
+    elsif url.include?('vnexpress.net')
+      ItemParsers::VnExpress.new(url)
     else
       nil
     end

@@ -9,6 +9,7 @@ List of supported site:
 * nhanam. com.vn
 * nhannvan. com
 * nsphuongnam. com
+* vnexpress. net
 
 ### How to contribute:
 
