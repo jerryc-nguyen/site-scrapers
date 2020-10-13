@@ -14,6 +14,8 @@ class ItemParsers::Detail
       ItemParsers::KhaiTam.new(url).detail
     elsif url.include?("nhanvan.com")
       ItemParsers::KhaiTam.new(url).detail
+    elsif url.include?("sachphuongnam.com")
+      ItemParsers::KhaiTam.new(url).detail
     else
       nil
     end

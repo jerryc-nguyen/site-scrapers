@@ -1,4 +1,4 @@
-class ItemParsers::Nhanvan
+class ItemParsers::SachPhuongNam
 
   def initialize(keyword)
     @mechanize = Mechanize.new
@@ -8,10 +8,10 @@ class ItemParsers::Nhanvan
   end
 
   def detail
-    page = @mechanize.get(@detail_url) rescue nil
+    page = @mechanize.get(@detail_url)
 
     if page.present?
-      title = page.search("#product h1").text.strip rescue nil
+      title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       description = page.search("head meta[property='og:description']").attr("content").to_s rescue nil
       image = page.search("head meta[property='og:image:secure_url']").attr("content").to_s rescue nil
       image_urls_ref = [image]
@@ -42,7 +42,7 @@ class ItemParsers::Nhanvan
         page_count   = text_item.split("Số trang:")[1].strip.to_i if text_item.include?("Số trang:")
         published_at = text_item.split("Ngày phát hành:")[1].strip if text_item.include?("Ngày phát hành:")
         size         = text_item.split("Kích thước:")[1].strip if text_item.include?("Kích thước:")
-        weight       = text_item.split("Trọng lượng(gr)")[1].strip if text_item.include?("Trọng lượng(gr)")
+        weight       = text_item.split("Trọng lượng(gr):")[1].strip if text_item.include?("Trọng lượng(gr)")
       end
 
       if isbn.to_s.length == 10
@@ -79,11 +79,11 @@ class ItemParsers::Nhanvan
         translator: translator,
         cover_type: cover_type,
         publisher: publisher,
-        company: "Nhà sách nhân văn",
+        company: "Nhà sách phuong nam",
         published_at: published_at,
         isbn10: isbn10,
         isbn13: isbn13,
-        source: "nhannvancom",
+        source: "phuongnamcom",
         is_lastest: false,
         version: version
       }
