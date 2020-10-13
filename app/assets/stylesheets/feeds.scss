@@ -1,0 +1,28 @@
+.feed-item{
+  .list-added-items{
+    position: relative;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: auto;
+
+    .item-column{
+      max-width: 158px;
+      margin-right: 5px;
+      margin-left: 5px;
+      display: inline-block;
+      vertical-align: top;
+
+      &.link-load-more-items-wrapper {
+        min-height: 200px;
+        padding-top: 100px;
+      }
+    }
+  }
+
+  .main-text,.owner-note {
+    line-height: 1.4285em;
+    font-size: 15px;
+    letter-spacing: 0.01rem;
+  }
+}
+
