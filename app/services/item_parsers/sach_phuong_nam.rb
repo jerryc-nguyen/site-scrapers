@@ -42,7 +42,7 @@ class ItemParsers::SachPhuongNam
         page_count   = text_item.split("Số trang:")[1].strip.to_i if text_item.include?("Số trang:")
         published_at = text_item.split("Ngày phát hành:")[1].strip if text_item.include?("Ngày phát hành:")
         size         = text_item.split("Kích thước:")[1].strip if text_item.include?("Kích thước:")
-        weight       = text_item.split("Kích thước:")[1].strip if text_item.include?("Trọng lượng(gr)")
+        weight       = text_item.split("Trọng lượng(gr):")[1].strip if text_item.include?("Trọng lượng(gr)")
       end
 
       if isbn.to_s.length == 10
@@ -79,11 +79,11 @@ class ItemParsers::SachPhuongNam
         translator: translator,
         cover_type: cover_type,
         publisher: publisher,
-        company: "Nhà sách nhân văn",
+        company: "Nhà sách phuong nam",
         published_at: published_at,
         isbn10: isbn10,
         isbn13: isbn13,
-        source: "nhannvancom",
+        source: "phuongnamcom",
         is_lastest: false,
         version: version
       }

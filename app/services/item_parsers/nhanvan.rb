@@ -42,7 +42,7 @@ class ItemParsers::Nhanvan
         page_count   = text_item.split("Số trang:")[1].strip.to_i if text_item.include?("Số trang:")
         published_at = text_item.split("Ngày phát hành:")[1].strip if text_item.include?("Ngày phát hành:")
         size         = text_item.split("Kích thước:")[1].strip if text_item.include?("Kích thước:")
-        weight       = text_item.split("Kích thước:")[1].strip if text_item.include?("Trọng lượng(gr)")
+        weight       = text_item.split("Trọng lượng(gr)")[1].strip if text_item.include?("Trọng lượng(gr)")
       end
 
       if isbn.to_s.length == 10
