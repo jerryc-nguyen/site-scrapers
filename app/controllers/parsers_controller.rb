@@ -1,5 +1,5 @@
 class ParsersController < ActionController
-  def details
+  def index
     url = params[:url].split('?').first
     data = ItemParsers::Detail.by_url(url)
     if data.present?
