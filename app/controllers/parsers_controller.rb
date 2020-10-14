@@ -1,6 +1,6 @@
-class ParsersController < ActionController::Base
+class ParsersController < ActionController
   def details
-    url = params[:url].split("?").first
+    url = params[:url].split('?').first
     data = ItemParsers::Detail.by_url(url)
     if data.present?
       render json: { status: 200, data:  data }
