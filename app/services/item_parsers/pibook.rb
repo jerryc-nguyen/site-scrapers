@@ -11,7 +11,7 @@ class ItemParsers::Pibook
     page = @mechanize.get(@detail_url) rescue nil
 
     if page.present?
-      title = page.search(".sachct .sachct2 h1").text rescue nil
+      title = title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       description = page.search(".gioithieus .dmabout").to_s.gsub(/href=\".+.\"/, "").gsub(/Mua sách online.+toàn quốc./, "").gsub(/Mua sách.+24h/, "") rescue nil
       image = page.search("head meta[property='og:image']").attr("content").to_s rescue nil
       image_urls_ref = [image]

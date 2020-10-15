@@ -27,7 +27,7 @@ class ItemParsers::Lazada
   def detail
     page = @mechanize.get(@detail_url) rescue nil
     if page.present?
-      title = page.search("#prod_title").text.gsub(/\A[[:space:]]+|[[:space:]]+\z/, '')
+      title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
 
       header = page.search("#productDetails .product-description__title").to_s
       thumb_html = page.search("#productDetails product-description__webyclip-thumbnails").to_s

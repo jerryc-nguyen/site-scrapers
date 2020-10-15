@@ -13,7 +13,7 @@ class ItemParsers::Vinabook
   def detail
     page = @mechanize.get(@detail_url) rescue nil
     if page.present?
-      title = page.search('h1.mainbox-title').text.strip
+      title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       author = page.search('.full-description .box-author').to_s.strip
       desc = page.search('.full-description').to_s.strip
       description = desc.gsub(author, '').gsub('\n', '<br />')
