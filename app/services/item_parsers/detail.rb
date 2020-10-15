@@ -16,15 +16,17 @@ class ItemParsers::Detail
     elsif url.include?('pibook.com')
       ItemParsers::Pibook.new(url)
     elsif url.include?('khaitam.com')
-      ItemParsers::KhaiTam.new(url)
+      ItemParsers::Sachkhaitam.new(url)
     elsif url.include?('nhanam.com.vn')
-      ItemParsers::KhaiTam.new(url)
+      ItemParsers::Nhanam.new(url)
     elsif url.include?('nhanvan.com')
-      ItemParsers::KhaiTam.new(url)
+      ItemParsers::Nhanvan.new(url)
     elsif url.include?('sachphuongnam.com')
-      ItemParsers::KhaiTam.new(url)
+      ItemParsers::SachPhuongNam.new(url)
     elsif url.include?('vnexpress.net')
       ItemParsers::VnExpress.new(url)
+    elsif url.include?('bookbuy.vn')
+      ItemParsers::Bookbuy.new(url)
     else
       nil
     end

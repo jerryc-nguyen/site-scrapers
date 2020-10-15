@@ -5,12 +5,12 @@ td {
   background: #fff;
 }
 
-.obook-logo {
+.logo {
   height: 38px;
   width: 38px;
   font-size: 15px;
-  color: $primary-color;
-  border: 1px solid $primary-color;
+  color: red;
+  border: 1px solid red;
   text-align: center;
   vertical-align: middle;
   line-height: 36px;
@@ -25,7 +25,7 @@ td {
   width: 100%;
 
   a {
-    color: $primary-color;
+    color: red;
   }
 }
 
@@ -38,5 +38,5 @@ td {
 }
 
 .email-header__logo-section {
-  color: $primary-color;
+  color: red;
 }

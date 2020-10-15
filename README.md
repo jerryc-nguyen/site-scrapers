@@ -10,6 +10,7 @@ List of supported site:
 * nhannvan. com
 * nsphuongnam. com
 * vnexpress. net
+* bookbuy. net
 
 ### How to contribute:
 
