@@ -1,0 +1,23 @@
+.images-uploaded{
+  .image-item{
+    float: left;
+    position: relative;
+    .image{
+      width: 100%;
+      padding: 3px;
+    }
+    .icon-remove-image{
+      position: absolute;
+      background: red;
+      height: 15px;
+      width: 15px;
+      font-size: 10px;
+      border-radius: 50%;
+      font-weight: bold;
+      cursor: pointer;
+      top: -2px;
+      right: -2px;
+      padding-left: 5px;
+    }
+  }
+}

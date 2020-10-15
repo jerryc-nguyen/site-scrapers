@@ -1,0 +1,201 @@
+.form-customize-pre-chat{
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  .instruction-image{
+    padding: 0px !important;
+    &.form-field{
+      box-shadow: none;
+      margin: 10px 0px !important;
+      padding-bottom: 0px;
+    }
+    img{
+      width: 100%;
+    }
+    .icon-delete{
+      position: absolute;
+      color: red;
+      font-size: 25px;
+      right: -10px;
+      top: -10px;
+      z-index: 99999;
+      background: white;
+      border-radius: 50%;
+    }
+  }
+  .first-guide-message{
+    text-align: center;
+    &.form-field{
+      box-shadow: none;
+      margin: 0px !important;
+      padding-bottom: 0px;
+    }
+    .wraper-guide-message-info{
+      display: block;
+      .edit-text{
+        font-weight: bold;
+        color: gray;
+      }
+    }
+  }
+  i{
+    color: #aaa;
+    cursor: pointer;
+    &:hover{
+      color: black;
+    }
+    &.require{
+      color: red;
+    }
+    &.icon-require:hover{
+      color: red;
+    }
+  }
+  .editable-input{
+    display: none;
+    border: none;
+    border-bottom: 1px dotted;
+    width: 100%;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.wraper-field-form-chat{
+  width: 300px;
+  margin: auto;
+  .form-field{
+    position: relative;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    margin: 10px 0px;
+    .main-inp{
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #d1d3d1;
+    }
+    .wraper-header-field{
+      overflow: hidden;
+      margin-bottom: 5px;
+      .text-and-edit{
+        float: left;
+        .edit-text{
+          font-weight: bold;
+          font-size: 15px;
+        }
+      }
+      .action-field{
+        float: right;
+      }
+    }
+    &.form-input-field{
+
+    }
+    .sortable-icon{  
+      position: absolute;
+      top: 15px;
+      left: -30px;
+    }
+    &.form-multiple-choice{
+      margin: 10px 0px;
+      .field-selection{
+        margin: 10px 0px;
+        overflow: hidden;
+        .disable-input{
+          float: left;
+          margin: 3px;
+          margin-right: 5px;
+        }
+        .editable-input{
+          width: 90%;
+        }
+      }
+      .add-choice{
+        cursor: pointer;
+      }
+    }
+    .question{
+      .title-text{
+        font-weight: 350;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      .option-text{
+        font-weight: 300;
+        margin-bottom: 3px;
+      }
+      .progress{
+        border-radius: 15px;
+        margin-bottom: 10px;
+        .progress-bar{
+          border-radius: 15px;
+          background: #f76227;
+        }
+      }
+    }
+  }
+}
+
+.hidden-icon-redundancy{
+  i.fa, i.fas{
+    color: gray !important;
+    display: none !important;
+  }
+  .add-choice{
+    display: none !important;
+  }
+  .icon-require{
+    display: none !important;
+  }
+  .icon-require.require{
+    color: red !important;
+    display: block !important;
+  }
+  .input-group-addon .fa{
+    display: block !important;
+  }
+  .border-error{
+    border: 1px solid red !important;
+  }
+  .editable-input{
+    display: none;
+    border: none;
+    border-bottom: 1px dotted;
+    width: 100%;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.wraper-customize-pre-widget{
+  .wraper-option-pre-widget{
+    margin: 20px 0px;
+    a{
+      cursor: pointer;
+    }
+    .option-enabled-form-chat{
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .wrap-option-field{
+      .header{
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+    .disabled-block{
+      pointer-events: none;
+      opacity: 0.6;
+      a{
+        color: gray;
+      }
+    }
+  }
+}
