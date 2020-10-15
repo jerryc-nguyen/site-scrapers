@@ -27,6 +27,8 @@ class ItemParsers::Detail
       ItemParsers::VnExpress.new(url)
     elsif url.include?('bookbuy.vn')
       ItemParsers::Bookbuy.new(url)
+    elsif url.include?('nhasachviet.vn')
+      ItemParsers::Nhasachvietvn.new(url)
     else
       nil
     end

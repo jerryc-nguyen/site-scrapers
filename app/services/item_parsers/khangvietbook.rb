@@ -11,7 +11,7 @@ class ItemParsers::Khangvietbook
     page = @mechanize.get(@detail_url) rescue nil
 
     if page.present?
-      title = page.search("#content_detail .name_book").text.strip rescue nil
+      title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       description = page.search("#sec_about_book").to_s rescue nil
       image = "https://khangvietbook.com.vn/" + page.search(".wrap_img_detail .sub_book img").attr("src").to_s rescue nil
       image_urls_ref = [image]

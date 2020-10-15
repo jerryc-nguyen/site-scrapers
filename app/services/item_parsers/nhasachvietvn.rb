@@ -1,4 +1,4 @@
-class ItemParsers::Nhanam
+class ItemParsers::Nhasachvietvn
 
   def initialize(keyword)
     @mechanize = Mechanize.new
@@ -12,11 +12,11 @@ class ItemParsers::Nhanam
 
     if page.present?
       title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
-      description = page.search(".bookdetailblockcontent").to_s rescue nil
+      description = page.search("head meta[property='og:description']").attr("content").to_s rescue nil
       image = page.search("head meta[property='og:image']").attr("content").to_s rescue nil
       image_urls_ref = [image]
-      cost_price   = page.search(".price .oldprice span").text.gsub(".","").chomp("đ").to_f rescue nil
-      price        = page.search(".price  p:nth-child(2) span").text.gsub(".","").chomp("đ").to_f rescue nil
+      cost_price   = page.search(".nsviet-detail span").text.gsub(".","").chomp("đ").to_f rescue nil
+      price        = page.search(".nsviet-detail  p:nth-child(2) span").text.gsub(".","").chomp("đ").to_f rescue nil
 
       author       = nil
       translator   = nil
@@ -33,15 +33,16 @@ class ItemParsers::Nhanam
       isbn10       = nil
       isbn13       = nil
 
-      page.search(".bookdetail .attributes li").each do |li|
+      page.search(".nsviet li").each do |li|
         text_item    = li.text
-        isbn         = text_item.split("Mã sản phẩm:")[1].strip if text_item.include?("Mã sản phẩm:")
+        isbn         = text_item.split("Mã hàng:")[1].strip if text_item.include?("Mã hàng:")
         author       = text_item.split("Tác giả:")[1].strip if text_item.include?("Tác giả:")
         translator   = text_item.split("Dịch giả:")[1].strip if text_item.include?("Dịch giả:")
         publisher    = text_item.split("Nhà xuất bản:")[1].strip if text_item.include?("Nhà xuất bản:")
         page_count   = text_item.split("Số trang:")[1].strip.to_i if text_item.include?("Số trang:")
         published_at = text_item.split("Ngày phát hành:")[1].strip if text_item.include?("Ngày phát hành:")
         size         = text_item.split("Kích thước:")[1].strip if text_item.include?("Kích thước:")
+        weight       = text_item.split("Trọng lượng(gr)")[1].strip if text_item.include?("Trọng lượng(gr)")
       end
 
       if isbn.to_s.length == 10
@@ -53,11 +54,12 @@ class ItemParsers::Nhanam
       images = image_urls_ref.compact.select(&:present?).take(2).map do |url|
         {
           id: -1,
-          thumb_url: url.gsub("cache/200x200", "cache/600x800").gsub(/w\d+\/media/, "w900/media")
+          thumb_url: url
         }
       end
 
       {
+        pages_count: pages_count,
         author: author,
         name: title,
         description: description,
@@ -78,12 +80,13 @@ class ItemParsers::Nhanam
         translator: translator,
         cover_type: cover_type,
         publisher: publisher,
-        company: "Nhã Nam",
+        company: "Nhà sách việt",
         published_at: published_at,
         isbn10: isbn10,
         isbn13: isbn13,
-        source: "nhanam",
-        is_lastest: false
+        source: "nhasachviet",
+        is_lastest: false,
+        version: version
       }
     end
   end

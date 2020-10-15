@@ -10,7 +10,7 @@ class ItemParsers::Tiki
   def detail
     page = @mechanize.get(@detail_url) rescue nil
     if page.present?
-      title = page.search('#product-name').text.strip
+      title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       description = page.search('#gioi-thieu p').to_s
 
       price_ref = page.search('#span-price').text.gsub('.', '').to_f
