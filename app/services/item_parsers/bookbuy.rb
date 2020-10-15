@@ -1,4 +1,4 @@
-class ItemParsers::Nhanvan
+class ItemParsers::Bookbuy
 
   def initialize(keyword)
     @mechanize = Mechanize.new
@@ -13,10 +13,10 @@ class ItemParsers::Nhanvan
     if page.present?
       title = page.search("head meta[property='og:title']").attr("content").to_s rescue nil
       description = page.search("head meta[property='og:description']").attr("content").to_s rescue nil
-      image = page.search("head meta[property='og:image:secure_url']").attr("content").to_s rescue nil
+      image = page.search("head meta[property='og:image']").attr("content").to_s rescue nil
       image_urls_ref = [image]
-      cost_price   = page.search(".price .oldprice span").text.gsub(".","").chomp("đ").to_f rescue nil
-      price        = page.search(".price  p:nth-child(2) span").text.gsub(".","").chomp("đ").to_f rescue nil
+      cost_price   = page.search(".des-detail span").text.gsub(".","").chomp("đ").to_f rescue nil
+      price        = page.search(".des-detail  p:nth-child(2) span").text.gsub(".","").chomp("đ").to_f rescue nil
 
       author       = nil
       translator   = nil
@@ -33,7 +33,7 @@ class ItemParsers::Nhanvan
       isbn10       = nil
       isbn13       = nil
 
-      page.search(".product-left li").each do |li|
+      page.search(".bbook-detail li").each do |li|
         text_item    = li.text
         isbn         = text_item.split("Mã hàng:")[1].strip if text_item.include?("Mã hàng:")
         author       = text_item.split("Tác giả:")[1].strip if text_item.include?("Tác giả:")
@@ -59,6 +59,7 @@ class ItemParsers::Nhanvan
       end
 
       {
+        pages_count: pages_count,
         author: author,
         name: title,
         description: description,
@@ -79,11 +80,11 @@ class ItemParsers::Nhanvan
         translator: translator,
         cover_type: cover_type,
         publisher: publisher,
-        company: "Nhà sách nhân văn",
+        company: "Buybook",
         published_at: published_at,
         isbn10: isbn10,
         isbn13: isbn13,
-        source: "nhannvancom",
+        source: "buybookvn",
         is_lastest: false,
         version: version
       }
